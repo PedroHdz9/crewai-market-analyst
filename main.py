@@ -4,6 +4,10 @@ from datetime import datetime
 import re
 
 from app.utils.pdf_generator import generate_pdf
+from app.database.models import create_tables
+from app.utils.score_parser import extract_score
+from app.database.report_repository import save_report
+
 
 def sanitize_filename(text):
     text = text.lower()
@@ -14,9 +18,38 @@ def sanitize_filename(text):
 
     return text[:50]
 
+create_tables()
+
 topic = input("Tema: ")
 
 result = run_crew(topic)
+
+report_text = str(result)
+
+market_opportunity = extract_score(
+    report_text,
+    "Market Opportunity Score"
+)
+
+competitive_threat = extract_score(
+    report_text,
+    "Competitive Threat Score"
+)
+
+technology_maturity = extract_score(
+    report_text,
+    "Technology Maturity Score"
+)
+
+regulatory_risk = extract_score(
+    report_text,
+    "Regulatory Risk Score"
+)
+
+investment_attractiveness = extract_score(
+    report_text,
+    "Investment Attractiveness Score"
+)
 
 Path("reports").mkdir(exist_ok=True)
 
@@ -48,14 +81,37 @@ with open(
     "w",
     encoding="utf-8"
 ) as f:
-    f.write(str(result))
+    f.write(report_text)
 
 pdf_path = report_path.with_suffix(".pdf")
 
 generate_pdf(
-    str(result),
+    report_text,
     str(pdf_path),
     topic
+)
+
+if None in [
+    market_opportunity,
+    competitive_threat,
+    technology_maturity,
+    regulatory_risk,
+    investment_attractiveness
+]:
+    print(
+        "\n Algunos scores no pudieron extraerse."
+    )
+
+save_report(
+    topic,
+    str(report_path),
+    str(pdf_path),
+
+    market_opportunity,
+    competitive_threat,
+    technology_maturity,
+    regulatory_risk,
+    investment_attractiveness
 )
 
 print(

@@ -1,12 +1,29 @@
 from crewai import Task
 
-def create_research_task(agent, topic):
+def create_research_task(
+    agent,
+    topic,
+    historical_context=""
+):
 
     return Task(
     description=f"""
     Investiga el siguiente tema:
 
     {topic}
+
+    CONTEXTO HISTÓRICO DISPONIBLE:
+
+    {historical_context}
+
+    Si existe contexto histórico:
+
+    - Utilízalo únicamente como referencia.
+    - Identifica cambios respecto a informes anteriores.
+    - Detecta nuevas tendencias o acontecimientos.
+    - Señala si algún riesgo u oportunidad ha aumentado o disminuido.
+    - No copies literalmente los informes anteriores.
+    - Prioriza siempre la información más reciente encontrada mediante búsqueda.
 
     Debes utilizar la herramienta Tavily para obtener información actualizada.
 

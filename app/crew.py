@@ -5,6 +5,8 @@ from app.agents.critic import critic
 from app.agents.writer import writer
 from app.agents.fact_checker import fact_checker
 
+from app.utils.memory import load_previous_context
+
 from app.tasks.research_task import create_research_task
 from app.tasks.analysis_task import create_analysis_task
 from app.tasks.report_task import create_report_task
@@ -13,9 +15,12 @@ from app.tasks.fact_check_task import create_fact_check_task
 
 def run_crew(topic):
 
+    historical_context = load_previous_context(topic)
+
     research = create_research_task(
         scout,
-        topic
+        topic,
+        historical_context
     )
 
     fact_check = create_fact_check_task(
