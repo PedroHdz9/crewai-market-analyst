@@ -1,85 +1,71 @@
-<!DOCTYPE html>
-<html>
+{% set title = topic %}
 
-<head>
+{% extends "base.html" %}
 
-    <title>{{ topic }}</title>
+{% block content %}
 
-    <link
-        rel="stylesheet"
-        href="/static/style.css">
+<div class="header">
 
-</head>
+    <h1>{{ topic }}</h1>
 
-<body>
-
-<div class="container">
-
-    <div class="header">
-
-        <h1>{{ topic }}</h1>
-
-        <p>
-            Historical Intelligence Reports
-        </p>
-
-    </div>
-
-    <div class="card">
-
-        <table>
-
-            <tr>
-
-                <th>Fecha</th>
-
-                <th>Opportunity</th>
-
-                <th>Threat</th>
-
-                <th>Maturity</th>
-
-                <th>Risk</th>
-
-                <th>Investment</th>
-
-                <th>Informe</th>
-
-            </tr>
-
-            {% for report in reports %}
-
-            <tr>
-
-                <td>{{ report[2] }}</td>
-
-                <td>{{ report[3] }}</td>
-
-                <td>{{ report[4] }}</td>
-
-                <td>{{ report[5] }}</td>
-
-                <td>{{ report[6] }}</td>
-
-                <td>{{ report[7] }}</td>
-
-                <td>
-
-                    <a href="/report/{{ report[0] }}">
-                        Ver informe
-                    </a>
-
-                </td>
-
-            </tr>
-
-            {% endfor %}
-
-        </table>
-
-    </div>
+    <p>
+        Historical Intelligence Reports
+    </p>
 
 </div>
 
-</body>
-</html>
+<div class="card">
+
+    <table>
+
+        <tr>
+
+            <th>Fecha</th>
+
+            <th>Opportunity</th>
+
+            <th>Threat</th>
+
+            <th>Maturity</th>
+
+            <th>Risk</th>
+
+            <th>Investment</th>
+
+            <th>Informe</th>
+
+        </tr>
+
+        {% for report in reports %}
+
+        <tr>
+
+            <td>{{ report[2] }}</td>
+
+            <td>{{ report[3] }}</td>
+
+            <td>{{ report[4] }}</td>
+
+            <td>{{ report[5] }}</td>
+
+            <td>{{ report[6] }}</td>
+
+            <td>{{ report[7] }}</td>
+
+            <td>
+
+                <a href="/report/{{ report[0] }}">
+                    Ver informe
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}

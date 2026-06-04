@@ -1,0 +1,51 @@
+{% set title = "Dashboard" %}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="header">
+
+    <h1>📊 Dashboard</h1>
+
+    <p>
+        AI Competitive Intelligence Platform
+    </p>
+
+</div>
+
+<div class="kpi-grid">
+
+    <div class="kpi-card">
+
+        <h3>Total Reports</h3>
+
+        <span>
+            {{ reports|length }}
+        </span>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <h3>Topics</h3>
+
+        <span>
+            --
+        </span>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <h3>Status</h3>
+
+        <span>
+            Active
+        </span>
+
+    </div>
+
+</div>
+
+{% endblock %}

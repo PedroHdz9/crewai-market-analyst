@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{{ title }}</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>MarketAI</h2>
+
+            <span>
+                Intelligence Platform
+            </span>
+
+        </div>
+
+        <nav>
+
+            <a href="/dashboard">
+                📊 Dashboard
+            </a>
+
+            <a href="/reports">
+                📄 Reports
+            </a>
+
+            <a href="/topics">
+                📚 Topics
+            </a>
+
+            <a href="/analytics">
+                📈 Analytics
+            </a>
+
+            <a href="/settings">
+                ⚙ Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <main class="main-content">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+</div>
+
+</body>
+</html>

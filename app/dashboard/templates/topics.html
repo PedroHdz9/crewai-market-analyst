@@ -1,0 +1,29 @@
+{% set title = "Topics" %}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Topics</h1>
+
+<div class="card">
+
+    <ul>
+
+        {% for topic in topics %}
+
+        <li>
+
+            <a href="/topic/{{ topic }}">
+                {{ topic }}
+            </a>
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endblock %}

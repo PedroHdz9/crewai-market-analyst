@@ -215,3 +215,48 @@ def get_report_by_id(report_id):
     conn.close()
 
     return row
+
+def get_unique_topics():
+
+    conn = get_connection()
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT DISTINCT topic
+    FROM reports
+    ORDER BY topic
+    """)
+
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    return rows
+
+def get_dashboard_stats():
+
+    conn = get_connection()
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT COUNT(*)
+    FROM reports
+    """)
+
+    total_reports = cursor.fetchone()[0]
+
+    cursor.execute("""
+    SELECT COUNT(DISTINCT topic)
+    FROM reports
+    """)
+
+    total_topics = cursor.fetchone()[0]
+
+    conn.close()
+
+    return {
+        "total_reports": total_reports,
+        "total_topics": total_topics
+    }

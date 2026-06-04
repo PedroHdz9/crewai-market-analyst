@@ -2,62 +2,139 @@
 <html>
 
 <head>
+
     <title>Market Intelligence Dashboard</title>
 
     <link
         rel="stylesheet"
         href="/static/style.css">
+
 </head>
 
 <body>
 
-<div class="container">
+<div class="layout">
 
-    <div class="header">
+    <aside class="sidebar">
 
-        <h1>Market Intelligence Dashboard</h1>
+        <div class="logo">
+            <h2>MarketAI</h2>
+            <span>Intelligence Platform</span>
+        </div>
 
-        <p>
-            AI Competitive Intelligence Platform
-        </p>
+        <nav>
 
-    </div>
+            <a href="/dashboard">📊 Dashboard</a>
 
-    <div class="card">
+            <a href="/reports">📄 Reports</a>
 
-        <table>
+            <a href="/topics">📚 Topics</a>
 
-            <tr>
-                <th>Tema</th>
-                <th>Fecha</th>
-                <th>Opportunity</th>
-            </tr>
+            <a href="/analytics">📈 Analytics</a>
 
-            {% for report in reports %}
+            <a href="/settings">⚙ Settings</a>
 
-            <tr>
+        </nav>
 
-                <td>
-                    <a href="/topic/{{ report[1] }}">
-                        {{ report[1] }}
-                    </a>
-                </td>
+    </aside>
 
-                <td>{{ report[2] }}</td>
+    <main class="main-content">
 
-                <td>
-                    <span class="badge">
-                        {{ report[3] }}
-                    </span>
-                </td>
+        <div class="header">
 
-            </tr>
+            <div>
 
-            {% endfor %}
+                <h1>Dashboard</h1>
 
-        </table>
+                <p>
+                    AI Competitive Intelligence Platform
+                </p>
 
-    </div>
+            </div>
+
+        </div>
+
+        <div class="kpi-grid">
+
+            <div class="kpi-card">
+
+                <h3>Total Reports</h3>
+
+                <span>
+                    {{ reports|length }}
+                </span>
+
+            </div>
+
+            <div class="kpi-card">
+
+                <h3>Topics Tracked</h3>
+
+                <span>
+                    {{ reports|length }}
+                </span>
+
+            </div>
+
+            <div class="kpi-card">
+
+                <h3>Latest Analysis</h3>
+
+                <span>
+                    Active
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Recent Reports</h2>
+
+            <table>
+
+                <tr>
+
+                    <th>Topic</th>
+
+                    <th>Date</th>
+
+                    <th>Opportunity</th>
+
+                </tr>
+
+                {% for report in reports %}
+
+                <tr>
+
+                    <td>
+
+                        <a href="/topic/{{ report[1] }}">
+                            {{ report[1] }}
+                        </a>
+
+                    </td>
+
+                    <td>{{ report[2] }}</td>
+
+                    <td>
+
+                        <span class="badge">
+                            {{ report[3] }}
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </main>
 
 </div>
 

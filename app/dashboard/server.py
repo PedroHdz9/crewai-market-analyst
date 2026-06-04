@@ -5,6 +5,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi import Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from fastapi.responses import RedirectResponse
 
 from app.database.report_repository import (
     get_all_reports,
@@ -114,4 +115,74 @@ def download_markdown(report_id: int):
         path=report[8],
         filename="report.md",
         media_type="text/markdown"
+    )
+
+@app.get("/")
+def root():
+    return RedirectResponse("/dashboard")
+
+@app.get("/dashboard")
+def dashboard(request: Request):
+
+    reports = get_all_reports()
+
+    return templates.TemplateResponse(
+        request=request,
+        name="dashboard.html",
+        context={
+            "reports": reports
+        }
+    )
+
+@app.get("/reports")
+def reports_page(request: Request):
+
+    reports = get_all_reports()
+
+    return templates.TemplateResponse(
+        request=request,
+        name="reports.html",
+        context={
+            "reports": reports
+        }
+    )
+
+@app.get("/topics")
+def topics_page(request: Request):
+
+    reports = get_all_reports()
+
+    topics = sorted(
+        list(
+            set(
+                report[1]
+                for report in reports
+            )
+        )
+    )
+
+    return templates.TemplateResponse(
+        request=request,
+        name="topics.html",
+        context={
+            "topics": topics
+        }
+    )
+
+@app.get("/analytics")
+def analytics_page(request: Request):
+
+    return templates.TemplateResponse(
+        request=request,
+        name="analytics.html",
+        context={}
+    )
+
+@app.get("/settings")
+def settings_page(request: Request):
+
+    return templates.TemplateResponse(
+        request=request,
+        name="settings.html",
+        context={}
     )

@@ -1,0 +1,47 @@
+{% set title = "Reports" %}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>📄 Reports</h1>
+
+<div class="card">
+
+    <table>
+
+        <tr>
+
+            <th>Topic</th>
+
+            <th>Date</th>
+
+            <th>Opportunity</th>
+
+        </tr>
+
+        {% for report in reports %}
+
+        <tr>
+
+            <td>
+
+                <a href="/topic/{{ report[1] }}">
+                    {{ report[1] }}
+                </a>
+
+            </td>
+
+            <td>{{ report[2] }}</td>
+
+            <td>{{ report[3] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}
