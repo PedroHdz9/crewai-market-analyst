@@ -259,3 +259,29 @@ tr:hover {
     }
 
 }
+
+.logo {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 30px;
+}
+
+.logo:hover {
+    opacity: 0.9;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-view {
+    color: #0b45c0;
+    font-weight: 600;
+}
+
+.btn-delete {
+    color: #490707;
+    font-weight: 600;
+}

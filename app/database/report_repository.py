@@ -2,6 +2,7 @@ from datetime import datetime
 
 from app.database.db import get_connection
 
+import os
 
 def save_report(
     topic,
@@ -260,3 +261,37 @@ def get_dashboard_stats():
         "total_reports": total_reports,
         "total_topics": total_topics
     }
+
+def delete_report(report_id):
+
+    conn = get_connection()
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT markdown_path, pdf_path
+        FROM reports
+        WHERE id = ?
+    """, (report_id,))
+
+    row = cursor.fetchone()
+
+    if row:
+
+        markdown_path = row[0]
+        pdf_path = row[1]
+
+        if markdown_path and os.path.exists(markdown_path):
+            os.remove(markdown_path)
+
+        if pdf_path and os.path.exists(pdf_path):
+            os.remove(pdf_path)
+
+    cursor.execute("""
+        DELETE FROM reports
+        WHERE id = ?
+    """, (report_id,))
+
+    conn.commit()
+
+    conn.close()

@@ -52,10 +52,21 @@
 
             <td>{{ report[7] }}</td>
 
-            <td>
+            <td class="actions">
 
-                <a href="/report/{{ report[0] }}">
-                    Ver informe
+                <a
+                    class="btn-view"
+                    href="/report/{{ report[0] }}"
+                >
+                    View
+                </a>
+
+                <a
+                    class="btn-delete"
+                    href="/delete/{{ report[0] }}"
+                    onclick="return confirm('Delete report?')"
+                >
+                    Delete
                 </a>
 
             </td>

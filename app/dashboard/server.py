@@ -10,7 +10,8 @@ from fastapi.responses import RedirectResponse
 from app.database.report_repository import (
     get_all_reports,
     get_reports_by_topic,
-    get_report_by_id
+    get_report_by_id,
+    delete_report
 )
 
 app = FastAPI()
@@ -185,4 +186,27 @@ def settings_page(request: Request):
         request=request,
         name="settings.html",
         context={}
+    )
+
+@app.get("/")
+def home(request: Request):
+
+    reports = get_all_reports()
+
+    return templates.TemplateResponse(
+        request=request,
+        name="index.html",
+        context={
+            "reports": reports
+        }
+    )
+
+@app.get("/delete/{report_id}")
+def delete(report_id: int):
+
+    delete_report(report_id)
+
+    return RedirectResponse(
+        url="/reports",
+        status_code=303
     )
