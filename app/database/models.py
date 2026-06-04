@@ -28,7 +28,9 @@ def create_tables():
 
         markdown_path TEXT,
 
-        pdf_path TEXT
+        pdf_path TEXT,
+
+        md_path TEXT
     )
     """)
 

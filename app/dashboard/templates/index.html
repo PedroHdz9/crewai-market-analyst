@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Market Intelligence Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>Market Intelligence Dashboard</h1>
+
+        <p>
+            AI Competitive Intelligence Platform
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <table>
+
+            <tr>
+                <th>Tema</th>
+                <th>Fecha</th>
+                <th>Opportunity</th>
+            </tr>
+
+            {% for report in reports %}
+
+            <tr>
+
+                <td>
+                    <a href="/topic/{{ report[1] }}">
+                        {{ report[1] }}
+                    </a>
+                </td>
+
+                <td>{{ report[2] }}</td>
+
+                <td>
+                    <span class="badge">
+                        {{ report[3] }}
+                    </span>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

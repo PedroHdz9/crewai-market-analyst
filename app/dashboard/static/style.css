@@ -1,0 +1,139 @@
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 40px;
+    color: #1f2937;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header p {
+    color: #6b7280;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,0.08);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+
+    transition: 0.2s;
+}
+
+a {
+    text-decoration: none;
+    color: #2563eb;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th {
+    background: #111827;
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tr:hover {
+    background: #f9fafb;
+}
+
+.badge {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.report-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 20px;
+    line-height: 1.8;
+}
+
+.report-content pre {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.report-content h1 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.report-content h2 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.report-content h3 {
+    margin-top: 20px;
+}
+
+.report-content ul {
+    padding-left: 25px;
+}
+
+.report-content li {
+    margin-bottom: 8px;
+}
+
+.report-content p {
+    margin-bottom: 15px;
+}
+
+.report-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.report-content th,
+.report-content td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.report-content code {
+    background: #f5f5f5;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
