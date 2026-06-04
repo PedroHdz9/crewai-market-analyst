@@ -1,7 +1,25 @@
 crewai
+crewai-tools
+
 langchain
 langchain-community
 langchain-ollama
+
+ollama
+
 python-dotenv
-markdown
 pydantic
+
+markdown
+
+fastapi
+uvicorn
+
+jinja2
+
+reportlab
+
+sqlite-utils
+
+python main.py
+python -m uvicorn app.dashboard.server:app --reload
