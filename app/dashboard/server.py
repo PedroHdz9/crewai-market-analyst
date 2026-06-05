@@ -14,6 +14,12 @@ from app.database.report_repository import (
     delete_report
 )
 
+from app.database.report_repository import (
+    get_analytics_data,
+    get_top_opportunities,
+    get_dashboard_stats
+)
+
 app = FastAPI()
 
 app.mount(
@@ -173,10 +179,20 @@ def topics_page(request: Request):
 @app.get("/analytics")
 def analytics_page(request: Request):
 
+    analytics = get_analytics_data()
+
+    top_opportunities = get_top_opportunities()
+
+    stats = get_dashboard_stats()
+
     return templates.TemplateResponse(
         request=request,
         name="analytics.html",
-        context={}
+        context={
+            "analytics": analytics,
+            "top_opportunities": top_opportunities,
+            "stats": stats
+        }
     )
 
 @app.get("/settings")

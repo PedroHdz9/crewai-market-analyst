@@ -1,11 +1,89 @@
+{% set title = "Analytics" %}
 {% extends "base.html" %}
 
 {% block content %}
 
 <h1>📈 Analytics</h1>
 
-<p>
-    Analytics dashboard coming soon.
-</p>
+<div class="kpi-grid">
+
+    <div class="kpi-card">
+        <h3>Total Reports</h3>
+        <span>{{ stats.total_reports }}</span>
+    </div>
+
+    <div class="kpi-card">
+        <h3>Topics</h3>
+        <span>{{ stats.total_topics }}</span>
+    </div>
+
+</div>
+
+<div class="card">
+
+    <h2>Average Strategic Scores</h2>
+
+    <table>
+
+        <tr>
+            <th>Metric</th>
+            <th>Average</th>
+        </tr>
+
+        <tr>
+            <td>Market Opportunity</td>
+            <td>{{ analytics.opportunity }}</td>
+        </tr>
+
+        <tr>
+            <td>Competitive Threat</td>
+            <td>{{ analytics.threat }}</td>
+        </tr>
+
+        <tr>
+            <td>Technology Maturity</td>
+            <td>{{ analytics.technology }}</td>
+        </tr>
+
+        <tr>
+            <td>Regulatory Risk</td>
+            <td>{{ analytics.risk }}</td>
+        </tr>
+
+        <tr>
+            <td>Investment Attractiveness</td>
+            <td>{{ analytics.investment }}</td>
+        </tr>
+
+    </table>
+
+</div>
+
+<div class="card">
+
+    <h2>Top Opportunities</h2>
+
+    <table>
+
+        <tr>
+            <th>Topic</th>
+            <th>Score</th>
+        </tr>
+
+        {% for item in top_opportunities %}
+
+        <tr>
+
+            <td>{{ item[0] }}</td>
+
+            <td>{{ item[1] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
 
 {% endblock %}

@@ -295,3 +295,74 @@ def delete_report(report_id):
     conn.commit()
 
     conn.close()
+
+def get_analytics_data():
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT
+            AVG(market_opportunity),
+            AVG(competitive_threat),
+            AVG(technology_maturity),
+            AVG(regulatory_risk),
+            AVG(investment_attractiveness)
+        FROM reports
+    """)
+
+    averages = cursor.fetchone()
+
+    conn.close()
+
+    return {
+        "opportunity": round(averages[0] or 0, 1),
+        "threat": round(averages[1] or 0, 1),
+        "technology": round(averages[2] or 0, 1),
+        "risk": round(averages[3] or 0, 1),
+        "investment": round(averages[4] or 0, 1),
+    }
+
+def get_top_opportunities(limit=10):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT
+            topic,
+            market_opportunity
+        FROM reports
+        ORDER BY market_opportunity DESC
+        LIMIT ?
+    """, (limit,))
+
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    return rows
+
+def get_dashboard_stats():
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT COUNT(*) FROM reports"
+    )
+
+    total_reports = cursor.fetchone()[0]
+
+    cursor.execute(
+        "SELECT COUNT(DISTINCT topic) FROM reports"
+    )
+
+    total_topics = cursor.fetchone()[0]
+
+    conn.close()
+
+    return {
+        "total_reports": total_reports,
+        "total_topics": total_topics
+    }
