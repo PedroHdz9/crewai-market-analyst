@@ -53,7 +53,7 @@ def topic_page(
     topic: str
 ):
 
-    reports = get_reports_by_topic(topic)
+    reports = get_reports_by_topic(topic.strip())
 
     return templates.TemplateResponse(
         request=request,

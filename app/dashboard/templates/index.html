@@ -112,8 +112,8 @@
 
                     <td>
 
-                        <a href="/topic/{{ report[1] }}">
-                            {{ report[1] }}
+                        <a href="/topic/{{ report[1]|trim|urlencode }}">
+                            {{ report[1]|trim }}
                         </a>
 
                     </td>
@@ -123,7 +123,7 @@
                     <td>
 
                         <span class="badge">
-                            {{ report[3] }}
+                            {{ report[3] if report[3] is not none else '—' }}
                         </span>
 
                     </td>

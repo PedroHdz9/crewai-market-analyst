@@ -1,9 +1,36 @@
+:root {
+    --color-bg: #f6f5f2;
+    --color-surface: #ffffff;
+    --color-text: #2a2724;
+    --color-text-muted: #6e6963;
+    --color-border: #e0ddd8;
+    --color-border-light: #ebe9e5;
+
+    --color-sidebar-bg: #1c2230;
+    --color-sidebar-hover: #262d3d;
+    --color-sidebar-text: #c8cdd8;
+    --color-sidebar-muted: #7d8496;
+
+    --color-accent: #4a6278;
+    --color-accent-soft: #e4eaf0;
+    --color-accent-soft-text: #3d5266;
+
+    --color-danger: #8c4444;
+
+    --shadow-card: 0 2px 10px rgba(42, 39, 36, 0.06);
+    --shadow-kpi: 0 2px 12px rgba(42, 39, 36, 0.04);
+
+    --color-table-header: #eeede9;
+    --color-row-hover: #f0eeeb;
+    --color-code-bg: #eeedea;
+}
+
 body {
     font-family: "Segoe UI", Arial, sans-serif;
-    background-color: #f5f7fa;
+    background-color: var(--color-bg);
     margin: 0;
     padding: 40px;
-    color: #1f2937;
+    color: var(--color-text);
 }
 
 .container {
@@ -21,17 +48,16 @@ body {
 }
 
 .header p {
-    color: #6b7280;
+    color: var(--color-text-muted);
 }
 
 .card {
-    background: white;
+    background: var(--color-surface);
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 15px;
 
-    box-shadow:
-        0 2px 10px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-card);
 }
 
 .card:hover {
@@ -42,20 +68,20 @@ body {
 
 a {
     text-decoration: none;
-    color: #2563eb;
+    color: var(--color-accent);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: var(--color-surface);
 
     border-radius: 12px;
     overflow: hidden;
 }
 
 th {
-    background: #111827;
+    background: var(--color-sidebar-bg);
     color: white;
     padding: 14px;
     text-align: left;
@@ -63,23 +89,23 @@ th {
 
 td {
     padding: 14px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--color-border-light);
 }
 
 tr:hover {
-    background: #f9fafb;
+    background: var(--color-row-hover);
 }
 
 .badge {
-    background: #dbeafe;
-    color: #1d4ed8;
+    background: var(--color-accent-soft);
+    color: var(--color-accent-soft-text);
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 12px;
 }
 
 .report-content {
-    background: white;
+    background: var(--color-surface);
     padding: 30px;
     border-radius: 12px;
     margin-top: 20px;
@@ -128,12 +154,12 @@ tr:hover {
 
 .report-content th,
 .report-content td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-border);
     padding: 10px;
 }
 
 .report-content code {
-    background: #f5f5f5;
+    background: var(--color-code-bg);
     padding: 2px 5px;
     border-radius: 4px;
 }
@@ -149,7 +175,7 @@ tr:hover {
 
 .sidebar {
     width: 260px;
-    background: #111827;
+    background: var(--color-sidebar-bg);
     color: white;
     padding: 30px;
     position: fixed;
@@ -163,7 +189,7 @@ tr:hover {
 }
 
 .logo span {
-    color: #9ca3af;
+    color: var(--color-sidebar-muted);
     font-size: 14px;
 }
 
@@ -173,7 +199,7 @@ tr:hover {
 
 .sidebar nav a {
     display: block;
-    color: #e5e7eb;
+    color: var(--color-sidebar-text);
     padding: 12px;
     border-radius: 8px;
     margin-bottom: 8px;
@@ -181,7 +207,7 @@ tr:hover {
 }
 
 .sidebar nav a:hover {
-    background: #1f2937;
+    background: var(--color-sidebar-hover);
 }
 
 .main-content {
@@ -205,15 +231,15 @@ tr:hover {
 }
 
 .kpi-card {
-    background: white;
+    background: var(--color-surface);
     padding: 25px;
     border-radius: 14px;
-    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    box-shadow: var(--shadow-kpi);
 }
 
 .kpi-card h3 {
     margin: 0;
-    color: #6b7280;
+    color: var(--color-text-muted);
     font-size: 14px;
 }
 
@@ -233,13 +259,13 @@ table {
 }
 
 th {
-    background: #f3f4f6;
-    color: #111827;
+    background: var(--color-table-header);
+    color: var(--color-text);
     font-weight: 600;
 }
 
 tr:hover {
-    background: #f8fafc;
+    background: var(--color-row-hover);
 }
 
 
@@ -277,11 +303,11 @@ tr:hover {
 }
 
 .btn-view {
-    color: #0b45c0;
+    color: var(--color-accent);
     font-weight: 600;
 }
 
 .btn-delete {
-    color: #490707;
+    color: var(--color-danger);
     font-weight: 600;
 }

@@ -115,7 +115,7 @@ def save_report(
     investment_attractiveness
 ):
 
-
+    topic = topic.strip()
 
     conn = get_connection()
 
@@ -189,9 +189,9 @@ def get_reports_by_topic(topic):
     cursor.execute("""
     SELECT *
     FROM reports
-    WHERE topic = ?
+    WHERE TRIM(topic) = TRIM(?)
     ORDER BY created_at DESC
-    """, (topic,))
+    """, (topic.strip(),))
 
     rows = cursor.fetchall()
 

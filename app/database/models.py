@@ -35,4 +35,10 @@ def create_tables():
     """)
 
     conn.commit()
+
+    cursor.execute(
+        "UPDATE reports SET topic = TRIM(topic) WHERE topic != TRIM(topic)"
+    )
+
+    conn.commit()
     conn.close()

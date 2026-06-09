@@ -26,15 +26,15 @@
 
             <td>
 
-                <a href="/topic/{{ report[1] }}">
-                    {{ report[1] }}
+                <a href="/topic/{{ report[1]|trim|urlencode }}">
+                    {{ report[1]|trim }}
                 </a>
 
             </td>
 
             <td>{{ report[2] }}</td>
 
-            <td>{{ report[3] }}</td>
+            <td>{{ report[3] if report[3] is not none else '—' }}</td>
 
         </tr>
 

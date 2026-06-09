@@ -20,7 +20,7 @@ def sanitize_filename(text):
 
 create_tables()
 
-topic = input("Tema: ")
+topic = input("Tema: ").strip()
 
 result = run_crew(topic)
 
